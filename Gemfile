@@ -82,3 +82,5 @@ gem 'faker', '~> 2.20'
 gem 'devise', '~> 4.8'
 
 gem 'font-awesome-rails'
+
+gem "bootstrap_form", "~> 5.0"
