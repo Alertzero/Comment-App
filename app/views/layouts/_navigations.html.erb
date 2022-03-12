@@ -1,31 +1,24 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
     <%= link_to_unless_current Rails.application.class.module_parent.name, root_path, class: 'navbar-brand'%> 
     <span>
     <% if user_signed_in? %>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+   
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav">
+    
           <li class="nav-item">
-            <%= fa_icon 'edit' %> <%= link_to 'Edit', edit_user_registration_path, class: "btn  btn-xs mr-1" %>
+            <%= fa_icon 'user'%><%= link_to current_user.email, edit_user_registration_path, class: "btn btn-xs" %>
           </li>
           <li class="nav-item">
-            <%= fa_icon 'inbox' %> <%= link_to 'Inboxes', inboxes_path, class: "btn  btn-xs mr-1" %>
+            <%= fa_icon 'inbox'%><%= link_to 'Inboxes', inboxes_path, class: "btn btn-xs" %>
           </li>
           <li class="nav-item">
-            <%= fa_icon 'plus' %> <%= link_to 'New inbox', new_inbox_path, class: "btn  btn-xs mr-1" %>
-          </li>
-        </ul>        
-
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item mr-1 pt-2">
-            <%= fa_icon 'user' %> <%= current_user.email%>
+            <%= fa_icon 'plus'%><%= link_to 'New inbox', new_inbox_path, class: "btn btn-xs" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Log out", destroy_user_session_path, class: "btn  btn-xs mr-1",method: :delete%>
+            <%= fa_icon 'sign-out'%><%= link_to "Log out", destroy_user_session_path, class: "btn  btn-xs",method: :delete%>
           </li>
         </ul>
     <% else %>
