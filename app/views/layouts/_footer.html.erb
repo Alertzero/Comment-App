@@ -1,0 +1,14 @@
+<footer class="footer mt-auto py-3 bg-light text-center">
+  <!-- Copyright -->
+  <div>
+    <%= link_to_unless_current 'Pricing', pricing_path, class: "btn btn-xs mr-1" %> |
+    <%= link_to_unless_current 'Privacy', privacy_path, class: "btn btn-xs mr-1" %> |
+    <%= link_to_unless_current 'Terms', terms_path, class: "btn btn-xs mr-1" %>
+  </div>
+
+  <div class="text-center p-3 mt-2 text-dark" ">
+    © 2022 Copyright:
+    <a class="text-dark" href="https://www.aratori.net/">Aratori.net</a>
+  </div>
+  <!-- Copyright -->
+</footer>
