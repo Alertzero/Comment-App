@@ -8,3 +8,11 @@
 
   <%= button_to "Destroy this inbox", @inbox, method: :delete %>
 </div>
+
+<h1> Messages <%= @inbox.messages.length %> </h1>
+
+<%#= link_to 'New message', new_inbox_message_path(@inbox)%>
+
+<%= link_to 'New message', [:new, @inbox, :message], class: "btn btn-xs"%>
+
+<%= render patial: 'inboxes/messages/message', colection: @inbox.messages%>
