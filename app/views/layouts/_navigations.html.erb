@@ -1,36 +1,37 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container">
-    <%= link_to_unless_current Rails.application.class.module_parent.name, root_path, class: 'navbar-brand'%> 
-    <span>
+    <%= link_to_unless_current 'Demo Feedback Application', root_path, class: 'navbar-brand'%>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <% if user_signed_in? %>
-   
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-        <ul class="navbar-nav">
-    
-          <li class="nav-item">
-            <%= fa_icon 'user'%><%= link_to current_user.email, edit_user_registration_path, class: "btn btn-xs" %>
-          </li>
-          <li class="nav-item">
-            <%= fa_icon 'inbox'%><%= link_to 'Inboxes', inboxes_path, class: "btn btn-xs" %>
-          </li>
-          <li class="nav-item">
-            <%= fa_icon 'plus'%><%= link_to 'New inbox', new_inbox_path, class: "btn btn-xs" %>
-          </li>
-          <li class="nav-item">
-            <%= fa_icon 'sign-out'%><%= link_to "Log out", destroy_user_session_path, class: "btn  btn-xs",method: :delete%>
-          </li>
-        </ul>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <%= link_to current_user.email, edit_user_registration_path, class: "nav-link fa fa-user" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Inboxes', inboxes_path, class: "nav-link fa fa-inbox" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'New inbox', new_inbox_path, class: "nav-link fa fa-plus" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Log out", destroy_user_session_path, class: "nav-link fa fa-sign-out",method: :delete%>
+        </li>
+      </ul>
+        
     <% else %>
-    <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <%= link_to "Register", new_user_registration_path, class: "btn btn-xs mr-1 text-white"%>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Sign In", new_user_session_path, class: "btn  btn-xs text-white"%>
-          </li>
-      </div>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <%= link_to "Register", new_user_registration_path, class: "nav-link fa fa-registered"%>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Sign In", new_user_session_path, class: "nav-link fa fa-sign-in"%>
+        </li>
+      </ul>
     <% end %>
-  </div>
+    </div>
+   
+ 
 </nav>
 
