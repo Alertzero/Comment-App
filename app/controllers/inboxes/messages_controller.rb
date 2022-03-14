@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = @inbox.messages.new(message_params)
+    @message = @inbox.messages.new(message_params) 
 
     respond_to do |format|
       if @message.save
@@ -20,7 +20,7 @@ class MessagesController < ApplicationController
 
   def destroy
     @message.destroy
-    @message = Message.find(params[:id])
+    @message = Message.find(params[:id]) #can change to @inbox.messages.find
     respond_to do |format|
       format.html { redirect_to @inbox, notice: "Message was successfully destroyed." }
     end
