@@ -2,17 +2,24 @@
 
 <%= render @inbox %>
 
-<div>
-  <%= link_to "Edit this inbox", edit_inbox_path(@inbox) %> |
-  <%= link_to "Back to inboxes", inboxes_path %>
+<div class="pt-3 pb-3">
+  <%= link_to "Edit this inbox", edit_inbox_path(@inbox), class: "btn btn-primary btn-xs" %>
+  <%= link_to "Back to inboxes", inboxes_path, class: "btn btn-primary btn-xs" %>
+  <%= link_to "Destroy this inbox", @inbox, method: :delete, class: "btn btn-primary btn-xs" %>
+</div>
 
-  <%= button_to "Destroy this inbox", @inbox, method: :delete %>
+<%= link_to 'New message', new_inbox_message_path(@inbox), class: "btn btn-primary btn-xs"%>
+
+<div id="new_message border">
+  <%= render 'inboxes/messages/form', message: Message.new %>
 </div>
 
 <h1> Messages <%= @inbox.messages.length %> </h1>
 
-<%#= link_to 'New message', new_inbox_message_path(@inbox)%>
+<div class="border">
+<%= Time.zone.now %>
+</div>
 
-<%= link_to 'New message', [:new, @inbox, :message], class: "btn btn-xs"%>
-
-<%= render patial: 'inboxes/messages/message', colection: @inbox.messages%>
+<div>
+  <%= render partial: 'inboxes/messages/message', collection: @inbox.messages %>
+</div>
