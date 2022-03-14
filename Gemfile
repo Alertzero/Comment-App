@@ -81,6 +81,8 @@ gem 'faker', '~> 2.20'
 
 gem 'devise', '~> 4.8'
 
-gem "font-awesome-rails"
+gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
 
 gem "bootstrap_form", "~> 5.0"
+
+gem 'acts_as_votable', '~> 0.10.0'
