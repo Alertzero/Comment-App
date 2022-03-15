@@ -2,6 +2,21 @@ module Inboxes
 class MessagesController < ApplicationController
   before_action :set_inbox
 
+  def upvote
+    @message = Message.find(params[:id])
+    flash[:notice] = 'Upvoted!'
+    if current_user.voted_up_on? @message
+ 
+      @message.downvote_from current_user
+
+    else current_user.voted_down_on? @message
+      
+      @message.liked_by current_user
+
+    end
+    redirect_to @inbox
+  end
+
   def new
     @message = @inbox.messages.new
   end
@@ -19,8 +34,9 @@ class MessagesController < ApplicationController
   end
 
   def destroy
-    @message.destroy
+    
     @message = Message.find(params[:id]) #can change to @inbox.messages.find
+    @message.destroy
     respond_to do |format|
       format.html { redirect_to @inbox, notice: "Message was successfully destroyed." }
     end

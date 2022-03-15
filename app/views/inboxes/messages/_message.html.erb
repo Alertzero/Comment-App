@@ -14,6 +14,11 @@
     <%= message.user.email %>
   </p>
 
+  <%= button_to 'Like', [:upvote, @inbox, message], method: :patch, data: { turbo: "false" }, class: "btn btn-primary btn-xs" %>
+  <%= message.get_upvotes.size%>
+  <%= message.get_downvotes.size%>
+  <%= current_user.voted_for? message%>
+
   <%= button_to "Destroy", inbox_message_path(@inbox, message), method: :delete, class: "btn btn-primary btn-xs" %>
 
 </div>
