@@ -15,9 +15,14 @@
   </p>
 
   <%= button_to 'Like', [:upvote, @inbox, message], method: :patch, data: { turbo: "false" }, class: "btn btn-primary btn-xs" %>
-  <%= message.get_upvotes.size%>
-  <%= message.get_downvotes.size%>
-  <%= current_user.voted_for? message%>
+
+<%= message.cached_votes_total%>
+<%= message.cached_votes_score%>
+<%= message.cached_votes_up%>
+<%= message.cached_votes_down%>
+<%= message.cached_weighted_score%>
+<%= message.cached_weighted_total%>
+<%= message.cached_weighted_average%>
 
   <%= button_to "Destroy", inbox_message_path(@inbox, message), method: :delete, class: "btn btn-primary btn-xs" %>
 

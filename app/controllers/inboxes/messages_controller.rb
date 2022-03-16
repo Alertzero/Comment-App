@@ -6,13 +6,11 @@ class MessagesController < ApplicationController
     @message = Message.find(params[:id])
     flash[:notice] = 'Upvoted!'
     if current_user.voted_up_on? @message
- 
       @message.downvote_from current_user
-
-    else current_user.voted_down_on? @message
-      
+    elsif current_user.voted_down_on? @message
       @message.liked_by current_user
-
+    else
+      @message.liked_by current_user
     end
     redirect_to @inbox
   end

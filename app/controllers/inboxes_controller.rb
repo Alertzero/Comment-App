@@ -1,5 +1,6 @@
 class InboxesController < ApplicationController
   before_action :set_inbox, only: %i[show edit update destroy]
+  before_action :authorize_inbox, only: %i[edit update destroy] 
 
   def index
     @inboxes = Inbox.all
@@ -11,7 +12,8 @@ class InboxesController < ApplicationController
     @inbox = Inbox.new
   end
 
-  def edit; end
+  def edit
+  end
 
   def create
     @inbox = current_user.inboxes.new(inbox_params)
@@ -28,7 +30,7 @@ class InboxesController < ApplicationController
   def update
     respond_to do |format|
       if @inbox.update(inbox_params)
-        format.html { redirect_to inbox_url(@inbox), notice: 'Inbox was successfully updated.' }
+        format.html { redirect_to @inbox, notice: 'Inbox was successfully updated.' }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -37,13 +39,16 @@ class InboxesController < ApplicationController
 
   def destroy
     @inbox.destroy
-
     respond_to do |format|
       format.html { redirect_to inboxes_url, notice: 'Inbox was successfully destroyed.' }
     end
   end
 
   private
+
+  def authorize_inbox
+    authorize @inbox
+  end
 
   def set_inbox
     @inbox = Inbox.find(params[:id])

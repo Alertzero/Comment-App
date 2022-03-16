@@ -85,4 +85,5 @@ gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
 
 gem "bootstrap_form", "~> 5.0"
 
-gem 'acts_as_votable', '~> 0.10.0'
+gem 'acts_as_votable', '~> 0.13.2'
+gem "pundit", "~> 2.2"
