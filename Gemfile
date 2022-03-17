@@ -87,3 +87,5 @@ gem "bootstrap_form", "~> 5.0"
 
 gem 'acts_as_votable', '~> 0.13.2'
 gem "pundit", "~> 2.2"
+
+gem "friendly_id", "~> 5.4"

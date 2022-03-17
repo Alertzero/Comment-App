@@ -4,6 +4,9 @@ class Inbox < ApplicationRecord
   belongs_to :user
   has_many :messages, dependent: :destroy
 
+  extend FriendlyId
+  friendly_id :name, use: %i[slugged finders]
+
   MIN_NAME = 6
   MAX_NAME = 100
 
