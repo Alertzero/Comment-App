@@ -1,14 +1,13 @@
 class InboxPolicy < ApplicationPolicy
-  
     def edit?
-        record.user == user
+      record.user == user
     end
-
+  
     def update?
-        edit?
+      edit?
     end
-
+  
     def destroy?
-        edit?
+      edit?
     end
   end

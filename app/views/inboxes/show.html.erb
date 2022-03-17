@@ -5,7 +5,8 @@
 <div class="pt-3 pb-3">
   <%= link_to "Edit this inbox", edit_inbox_path(@inbox), class: "btn btn-primary btn-xs" %>
   <%= link_to "Back to inboxes", inboxes_path, class: "btn btn-primary btn-xs" %>
-  <%= link_to "Destroy this inbox", @inbox, method: :delete, class: "btn btn-primary btn-xs" %>
+  <%= button_to "Destroy this inbox", @inbox, method: :delete, class: "btn btn-danger btn-xs", data: { confirm: 'Are you sure?' } %>
+  
 </div>
 
 <%= link_to 'New message', new_inbox_message_path(@inbox), class: "btn btn-primary btn-xs"%>
