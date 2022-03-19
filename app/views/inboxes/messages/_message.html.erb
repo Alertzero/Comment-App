@@ -1,4 +1,4 @@
-<div id="<%= dom_id message %>" class="border">
+<div id="<%= dom_id message %>" class="my-3 border">
   <p>
     <strong>Body:</strong>
     <%= simple_format(message.body) %>
@@ -14,16 +14,17 @@
     <%= message.user.email %>
   </p>
 
-  <%= button_to 'Like', [:upvote, @inbox, message], method: :patch, data: { turbo: "false" }, class: "btn btn-primary btn-xs" %>
+  <%= button_to 'Like', [:upvote, @inbox, message], method: :patch, data: { turbo: "false" }, class: "btn btn-primary btn-xs", form: {style: 'display:inline-block;'} %>
+  <%= button_to "Destroy", inbox_message_path(@inbox, message), method: :delete, class: "btn btn-danger btn-xs", form: {style: 'display:inline-block;'} %>
 
-<%= message.cached_votes_total%>
-<%= message.cached_votes_score%>
-<%= message.cached_votes_up%>
-<%= message.cached_votes_down%>
-<%= message.cached_weighted_score%>
-<%= message.cached_weighted_total%>
-<%= message.cached_weighted_average%>
+  <%= message.cached_votes_total%>
+  <%= message.cached_votes_score%>
+  <%= message.cached_votes_up%>
+  <%= message.cached_votes_down%>
+  <%= message.cached_weighted_score%>
+  <%= message.cached_weighted_total%>
+  <%= message.cached_weighted_average%>
 
-  <%= button_to "Destroy", inbox_message_path(@inbox, message), method: :delete, class: "btn btn-danger btn-xs" %>
+
 
 </div>

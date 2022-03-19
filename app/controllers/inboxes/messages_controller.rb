@@ -26,21 +26,19 @@ class MessagesController < ApplicationController
       if @message.save
         format.turbo_stream do
           render turbo_stream: [
-            turbo_stream.update(@message,
-                                 partial: 'inboxes/messages/message',
+            turbo_stream.update('new_message',
+                                 partial: 'inboxes/messages/form',
                                  locals: { message: Message.new })
           ]
         end
         format.html { redirect_to @inbox, notice: "Message was successfully created." }
       else
+
         format.turbo_stream do
-          render turbo_stream: [
-            turbo_stream.replace(@message,
-                                 partial: 'inboxes/messages/message',
-                                 locals: { message: @message })
-          ]
+          render turbo_stream: turbo_stream.update('new_message', partial: 'inboxes/messages/form', locals: { message: @message })
         end
         format.html { render :new, status: :unprocessable_entity }
+
       end
     end
   end
@@ -50,6 +48,7 @@ class MessagesController < ApplicationController
     @message = Message.find(params[:id]) #can change to @inbox.messages.find
     @message.destroy
     respond_to do |format|
+      format.turbo_stream { render turbo_stream: turbo_stream.remove(@message) }
       format.html { redirect_to @inbox, notice: "Message was successfully destroyed." }
     end
   end
