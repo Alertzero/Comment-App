@@ -6,16 +6,16 @@
   <%= link_to "Edit this inbox", edit_inbox_path(@inbox), class: "btn btn-primary btn-xs" if policy(@inbox).edit? %>
 </div>
 
+<div id="new_message border">
+  <%= render 'inboxes/messages/form', message: Message.new %>
+</div>
+
 <div class="">
 <%= Time.zone.now %>
 </div>
 
 <div id= "message_list">
   <%= render partial: 'inboxes/messages/message', collection: @inbox.messages %>
-</div>
-
-<div id="new_message border">
-  <%= render 'inboxes/messages/form', message: Message.new %>
 </div>
 
 <div class="py-3">

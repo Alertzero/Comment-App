@@ -55,7 +55,7 @@ class MessagesController < ApplicationController
     @message = Message.find(params[:id]) #can change to @inbox.messages.find
     @message.destroy
     respond_to do |format|
-      format.turbo_stream { render turbo_stream: turbo_stream.remove(@message) }
+      format.turbo_stream { render turbo_stream: [turbo_stream.remove(@message), turbo_stream.update('message_counter', @inbox.messages_count)] }
       format.html { redirect_to @inbox, notice: "Message was successfully destroyed." }
     end
   end
