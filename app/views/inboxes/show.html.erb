@@ -10,7 +10,7 @@
 <%= Time.zone.now %>
 </div>
 
-<div>
+<div id= "message_list">
   <%= render partial: 'inboxes/messages/message', collection: @inbox.messages %>
 </div>
 
