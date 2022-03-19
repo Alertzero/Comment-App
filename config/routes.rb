@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'     
   end
   resources :inboxes do
-    resources :messages, only: %i[new create destroy], module: :inboxes do
+    resources :messages, only: %i[create destroy], module: :inboxes do
       member do
         patch :upvote
       end

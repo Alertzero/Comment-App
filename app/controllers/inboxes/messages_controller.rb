@@ -15,10 +15,6 @@ class MessagesController < ApplicationController
     redirect_to @inbox
   end
 
-  def new
-    @message = @inbox.messages.new
-  end
-
   def create
     @message = @inbox.messages.new(message_params) 
 
