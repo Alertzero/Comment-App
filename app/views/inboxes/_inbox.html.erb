@@ -3,8 +3,16 @@
     <strong>Name:</strong>
     <%= inbox.name %>
   </p>
-
+ <a>
   Wrote by <%= inbox.user.email %>
-  <span> |
+  <span> 
+     on
+    <%= inbox.created_at.strftime('%d %B %Y') %>
+    <span> |
   <a id="message_counter">Messages: <%= inbox.messages_count %> </a>
+  </a>
+
+   
+   
+ 
 </div>
