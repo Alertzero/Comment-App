@@ -4,15 +4,19 @@ module Inboxes
 
     def upvote
       @message = Message.find(params[:id])
-      flash[:notice] = 'Upvoted!'
-      if current_user.voted_up_on? @message
-        @message.downvote_from current_user
-      elsif current_user.voted_down_on? @message
-        @message.liked_by current_user
-      else
-        @message.liked_by current_user
+      @message.upvote! current_user
+      respond_to do |format|
+        format.turbo_stream do
+          render turbo_stream: [
+            
+            # turbo_stream.update('flash', partial: "shared/flash"),
+            turbo_stream.replace(@message,
+                                 partial: 'inboxes/messages/message',
+                                 locals: { message: @message })
+          ]
+        end
+        format.html { redirect_to @inbox, notice: 'Upvoted!' }
       end
-      redirect_to @inbox
     end
 
     def create
