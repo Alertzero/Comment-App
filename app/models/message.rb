@@ -10,5 +10,4 @@ class Message < ApplicationRecord
   validates :body, length: { in: MIN_BODY..MAX_BODY }
 
   acts_as_votable
-
 end
