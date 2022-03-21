@@ -16,11 +16,6 @@
   Wrote by <%= message.user.email %> on <%= message.created_at.strftime('%d %B %Y, %H:%M') %>
 </div>
 
-  <% if current_user.voted_up_on? message%>
-Like
-  <% else %>
-Unlike
-<% end %>
 
 
   <%= button_to 'Like', [:upvote, @inbox, message], method: :patch, data: { turbo: "false" }, class: "btn btn-primary btn-xs", form: {style: 'display:inline-block;'} %>

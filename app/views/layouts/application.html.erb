@@ -13,13 +13,17 @@
 
 
   <body>
-  <%= render "layouts/navigations"%>
+  <%= render "shared/navigations"%>
     <div class="container mt-5 mb-5">
-      <%= render "layouts/messages"%>
+      
+      <%= render "shared/messages"%>
+<br>
+      <%= render 'shared/flash' %>
+      
       <%= yield %>
     </div>
   
-    <%= render "layouts/footer"%>
+    <%= render "shared/footer"%>
 
   </body>
 </html>
