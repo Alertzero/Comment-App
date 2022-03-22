@@ -85,5 +85,5 @@ gem 'acts_as_votable', '~> 0.13.2'
 gem "pundit", "~> 2.2"
 gem "friendly_id", "~> 5.4"
 gem 'omniauth-google-oauth2'
-gem 'omniauth-rails_csrf_protection'
+gem "omniauth-rails_csrf_protection"
 gem 'font-awesome-sass'
