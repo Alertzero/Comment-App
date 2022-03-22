@@ -86,3 +86,4 @@ gem "pundit", "~> 2.2"
 gem "friendly_id", "~> 5.4"
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
+gem 'font-awesome-sass'
