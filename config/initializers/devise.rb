@@ -23,7 +23,8 @@ end
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
 
-  config.omniauth :google_oauth2, '1037350831157-dc97okda6co4a380jeumssqd8vmqml8a.apps.googleusercontent.com', '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', {}
+
+  
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
@@ -287,7 +288,12 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-
+  config.omniauth :google_oauth2
+  Rails.application.credentials.dig(:omniauth, :google, :id)
+  Rails.application.credentials.dig(:omniauth, :google, :secret)
+  config.omniauth :github
+  Rails.application.credentials.dig(:omniauth, :github, :id)
+  Rails.application.credentials.dig(:omniauth, :github, :secret)
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.

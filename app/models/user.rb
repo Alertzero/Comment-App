@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:google_oauth2]
+         :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:google_oauth2, :github]
   has_many :inboxes, dependent: :destroy
   has_many :messages, through: :inboxes
   acts_as_voter
@@ -11,14 +11,19 @@ class User < ApplicationRecord
     data = access_token.info
     user = User.where(email: data['email']).first
 
-    # Uncomment the section below if you want users to be created if they don't exist
-    # unless user
-    #     user = User.create(name: data['name'],
-    #        email: data['email'],
-    #        password: Devise.friendly_token[0,20]
-    #     )
-    # end
+    user ||= User.create(
+      email: data['email'],
+      password: Devise.friendly_token[0, 20]
+    )
+
+    #user.name = access_token.info.name
+    #user.image = access_token.info.image
+    #user.provider = access_token.provider
+    #user.uid = access_token.uid
+    #user.skip_confirmation!
+    user.save
+
     user
-end
+  end
 
 end
