@@ -1,4 +1,12 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+
+
+  def action_missing(provider)
+    # Set up authentication/authorizations here, and distribute tasks
+    # that are provider specific to other methods, leaving only tasks
+    # that work across all providers in this method. 
+  end
+  
   def google_oauth2
       # You need to implement the method below in your model (e.g. app/models/user.rb)
       @user = User.from_omniauth(request.env['omniauth.auth'])
