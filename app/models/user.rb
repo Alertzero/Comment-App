@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:google_oauth2, :github]
   has_many :inboxes, dependent: :destroy
   has_many :messages, through: :inboxes
+  
   acts_as_voter
   
   def self.from_omniauth(access_token)
