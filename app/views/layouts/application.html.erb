@@ -19,8 +19,6 @@
       <%= render "shared/messages"%>
 <br>
       <%= render 'shared/flash' %>
-      <%= button_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, method: :post %>
-      <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, method: :post, data: { turbolinks: false } %>
       <%= yield %>
     </div>
   
