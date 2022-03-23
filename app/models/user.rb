@@ -17,12 +17,12 @@ class User < ApplicationRecord
       password: Devise.friendly_token[0, 20]
     )
 
+
     user.name = access_token.info.name
     user.image = access_token.info.image
     user.provider = access_token.provider
     user.uid = access_token.uid
-    # user.skip_confirmation!
-    user.save
+    # user.skip_confirmation
 
     user
   end
