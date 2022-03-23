@@ -15,7 +15,9 @@
         <li class="nav-item">
           <%= link_to 'New inbox', new_inbox_path, class: "nav-link fa fa-plus" %>
         </li>
-  
+        <li class="nav-item">
+        <%= image_tag current_user.image, size: '30x30', alt: "#{current_user.email}" if current_user.image? %>
+        </li>
         <li class="nav-item">
           <%= link_to "Log out", destroy_user_session_path, class: "nav-link fa fa-sign-out",method: :delete%>
         </li>

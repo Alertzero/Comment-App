@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:google_oauth2, :github]
   has_many :inboxes, dependent: :destroy
   has_many :messages, through: :inboxes
-  
+
   acts_as_voter
   
   def self.from_omniauth(access_token)
@@ -17,10 +17,10 @@ class User < ApplicationRecord
       password: Devise.friendly_token[0, 20]
     )
 
-    #user.name = access_token.info.name
-    #user.image = access_token.info.image
-    #user.provider = access_token.provider
-    #user.uid = access_token.uid
+    user.name = access_token.info.name
+    user.image = access_token.info.image
+    user.provider = access_token.provider
+    user.uid = access_token.uid
     #user.skip_confirmation!
     user.save
 
