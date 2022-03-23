@@ -1,13 +1,12 @@
-class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+module Users
+  class OmniauthCallbacksController < Devise::OmniauthCallbacksController
+    def action_missing(provider)
+      # Set up authentication/authorizations here, and distribute tasks
+      # that are provider specific to other methods, leaving only tasks
+      # that work across all providers in this method.
+    end
 
-
-  def action_missing(provider)
-    # Set up authentication/authorizations here, and distribute tasks
-    # that are provider specific to other methods, leaving only tasks
-    # that work across all providers in this method. 
-  end
-  
-  def google_oauth2
+    def google_oauth2
       # You need to implement the method below in your model (e.g. app/models/user.rb)
       @user = User.from_omniauth(request.env['omniauth.auth'])
 
@@ -18,7 +17,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         session['devise.google_data'] = request.env['omniauth.auth'].except('extra') # Removing extra as it can overflow some session stores
         redirect_to new_user_registration_url, alert: @user.errors.full_messages.join("\n")
       end
-  end
+    end
 
     def github
       @user = User.from_omniauth(request.env['omniauth.auth'])
@@ -34,7 +33,5 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     def failure
       redirect_to root_path, alert: 'Failure. Please try again'
     end
-
-
-  
   end
+end
