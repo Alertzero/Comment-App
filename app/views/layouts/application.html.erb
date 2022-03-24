@@ -13,12 +13,10 @@
 
 
   <body>
-  <%= render "shared/navigations"%>
+    <%= render "shared/navigations"%>
+    <%= render 'shared/flash' %>
     <div class="container mt-5 mb-5">
-      
-      <%= render "shared/messages"%>
-<br>
-      <%= render 'shared/flash' %>
+      <%= image_tag current_user.image, size: '30x30', alt: "#{current_user.email}" if user_signed_in? && current_user.image? %>
       <%= yield %>
     </div>
   
