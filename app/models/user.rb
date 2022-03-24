@@ -14,14 +14,15 @@ class User < ApplicationRecord
 
     user ||= User.create(
       email: data['email'],
-      password: Devise.friendly_token[0, 20],
-      name: access_token.info.name,
-      image: access_token.info.image,
-      provider: access_token.provider,
-      uid: access_token.uid
+      password: Devise.friendly_token[0, 20]
     )
-    
-    # user.skip_confirmation
+
+    user.name = access_token.info.name
+    user.image = access_token.info.image
+    user.provider = access_token.provider
+    user.uid = access_token.uid
+    user.skip_confirmation!
+    user.save
 
     user
   end
