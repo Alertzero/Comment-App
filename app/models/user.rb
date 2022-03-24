@@ -21,7 +21,6 @@ class User < ApplicationRecord
     user.image = access_token.info.image
     user.provider = access_token.provider
     user.uid = access_token.uid
-    user.skip_confirmation!
     user.save
 
     user
