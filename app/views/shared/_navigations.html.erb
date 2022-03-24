@@ -7,6 +7,9 @@
     <% if user_signed_in? %>
       <ul class="navbar-nav">
         <li class="nav-item">
+          <%= image_tag current_user.image, size: '30x30', alt: "#{current_user.email}" if user_signed_in? && current_user.image? %>
+        </li>
+        <li class="nav-item">
           <%= link_to current_user.email, edit_user_registration_path, class: "nav-link fa fa-user" %> 
         </li>
         <li class="nav-item">
