@@ -88,4 +88,3 @@ gem 'omniauth-google-oauth2'
 gem "omniauth-rails_csrf_protection"
 gem 'font-awesome-sass'
 gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
-gem 'importmap-rails'
